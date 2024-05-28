@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
 import axios from 'axios'
-
-import Card from './Card'
-
+import Card from "./Card"
 
 const Bands =()=> {
-
 
     const [ bands, setBands ] = useState([])
 
@@ -16,21 +13,24 @@ const Bands =()=> {
             })
     }, [])
 
-    const bandCards = bands.map(band =>{
+    const bandCards = bands.map(band => {
         return <Card
-                    key={band.band_id}
-                    id={band.band_id}
-                    name={band.band}
-                    imgUrl={band.imgUrl}
-                />
+            key={band.band_id}
+            id={band.band_id}
+            name={band.band}
+            imgUrl={band.imgUrl}
+            path={'/band'}
+        />
     })
 
-    return (
-        <main className="main" id="bandsMain">
+    return(
+        <main className="main" id="mainHome">
             <div className="container">
-                <h2>Bands</h2>
-                <div className='row row-cols-1 row-cols-md-5 g-4'>
-                    { bandCards }
+                <div className="row">
+                    <h2>bands</h2>
+                    <div className="row row-cols-1 row-cols-md-4 g-4">
+                        { bandCards }
+                    </div>
                 </div>
             </div>
         </main>
